@@ -1,0 +1,56 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CM_FF_Patients"
+  DTS:DTSID="{280471BC-3BAE-4509-ADC6-493BB1AA28A3}"
+  DTS:CreationName="FLATFILE">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:Format="Delimited"
+      DTS:LocaleID="1033"
+      DTS:HeaderRowDelimiter="_x000D__x000A_"
+      DTS:ColumnNamesInFirstDataRow="True"
+      DTS:RowDelimiter=""
+      DTS:TextQualifier="_x003C_none_x003E_"
+      DTS:CodePage="1252"
+      DTS:ConnectionString="C:\Users\Mark\Documents\repos\Healthcare ETL Project\data\patients.csv">
+      <DTS:FlatFileColumns>
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="patient_id"
+          DTS:DTSID="{026932D6-496A-415B-9DCE-B6594CB4F9A7}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="gender"
+          DTS:DTSID="{55232F6F-A56A-4E8C-9D2B-D91C9E13C06E}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="birth_year"
+          DTS:DTSID="{F75DF674-9848-41DE-9D2B-57F7D2BF55A0}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x000D__x000A_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="zip3"
+          DTS:DTSID="{5360C274-4582-443E-B95A-6C682AAF7B81}"
+          DTS:CreationName="" />
+      </DTS:FlatFileColumns>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/9/2025 9:14:43 PM"
@@ -11,9 +11,1122 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionGUID="{238A8CEA-28B5-45BB-9EAC-FEA886C8834F}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{B15BBE13-1B6F-433B-B296-D45E47B52DE8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
-  <DTS:Executables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Load DimProvider"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8B2F13C9-7E24-487C-AF12-9FCA669E1ABA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Load DimProvider"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Load DimProvider\Cleanup"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Cleanup"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load DimProvider\Cleanup.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\Cleanup.Inputs[Derived Column Input].Columns[provider_npi]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="provider_npi"
+                      lineageId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].Columns[provider_npi]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\Cleanup.Inputs[Derived Column Input].Columns[provider_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="provider_name"
+                      lineageId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].Columns[provider_name]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\Cleanup.Inputs[Derived Column Input].Columns[specialty]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="specialty"
+                      lineageId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].Columns[specialty]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT Load DimProvider\Cleanup.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[ProviderNPI_clean]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[ProviderNPI_clean]"
+                      name="ProviderNPI_clean"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,20,1252)[LTRIM]([RTRIM](#{Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].Columns[provider_npi]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,20,1252)LTRIM(RTRIM(provider_npi))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[ProviderName_clean]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[ProviderName_clean]"
+                      name="ProviderName_clean"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,100,1252)[LTRIM]([RTRIM](#{Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].Columns[provider_name]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,100,1252)LTRIM(RTRIM(provider_name))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[Specialty_clean]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[Specialty_clean]"
+                      name="Specialty_clean"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,100,1252)[LTRIM]([RTRIM](#{Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].Columns[specialty]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,100,1252)LTRIM(RTRIM(specialty))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT Load DimProvider\Cleanup.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DimProvider\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load DimProvider\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="{9DC3DE5D-B54E-4FE7-94E8-4806F0818D70}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_FF_Providers]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].Columns[provider_npi]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[provider_npi]"
+                      length="50"
+                      lineageId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].Columns[provider_npi]"
+                      name="provider_npi"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].Columns[provider_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[provider_name]"
+                      length="50"
+                      lineageId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].Columns[provider_name]"
+                      name="provider_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].Columns[specialty]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[specialty]"
+                      length="50"
+                      lineageId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].Columns[specialty]"
+                      name="specialty"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[provider_npi]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="provider_npi" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[provider_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="provider_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[specialty]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="specialty" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DimProvider\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimProvider]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimProvider]) [refTable]
+where [refTable].[ProviderNPI] = ? and [refTable].[ProviderName] = ? and [refTable].[Specialty] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProviderKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProviderNPI" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProviderName" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Specialty" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[ProviderNPI_clean]};#{Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[ProviderName_clean]};#{Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[Specialty_clean]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load DimProvider\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_OLEDB_SQL]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load DimProvider\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\Lookup.Inputs[Lookup Input].Columns[ProviderNPI_clean]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="ProviderNPI_clean"
+                      lineageId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[ProviderNPI_clean]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ProviderNPI</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\Lookup.Inputs[Lookup Input].Columns[ProviderName_clean]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="ProviderName_clean"
+                      lineageId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[ProviderName_clean]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ProviderName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\Lookup.Inputs[Lookup Input].Columns[Specialty_clean]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Specialty_clean"
+                      lineageId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[Specialty_clean]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Specialty</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT Load DimProvider\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output].Columns[pk_ProviderKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output].Columns[pk_ProviderKey]"
+                      name="pk_ProviderKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProviderKey</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output].Columns[pk_ProviderNPI]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="20"
+                      lineageId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output].Columns[pk_ProviderNPI]"
+                      name="pk_ProviderNPI"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProviderNPI</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output].Columns[pk_ProviderName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output].Columns[pk_ProviderName]"
+                      name="pk_ProviderName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProviderName</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output].Columns[pk_Specialty]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output].Columns[pk_Specialty]"
+                      name="pk_Specialty"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Specialty</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT Load DimProvider\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT Load DimProvider\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DimProvider\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE dbo.DimProvider
+SET ProviderNPI=?, ProviderName=?, Specialty=?
+WHERE ProviderKey=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load DimProvider\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_OLEDB_SQL]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input].Columns[pk_ProviderNPI]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="pk_ProviderNPI"
+                      externalMetadataColumnId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output].Columns[pk_ProviderNPI]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input].Columns[pk_ProviderName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="pk_ProviderName"
+                      externalMetadataColumnId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output].Columns[pk_ProviderName]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input].Columns[pk_Specialty]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="pk_Specialty"
+                      externalMetadataColumnId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output].Columns[pk_Specialty]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input].Columns[pk_ProviderKey]"
+                      cachedDataType="i4"
+                      cachedName="pk_ProviderKey"
+                      externalMetadataColumnId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output].Columns[pk_ProviderKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimProvider\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load DimProvider\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimProvider\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimProvider\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DimProvider\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimProvider]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load DimProvider\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_OLEDB_SQL]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProviderNPI_clean]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="ProviderNPI_clean"
+                      externalMetadataColumnId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProviderNPI]"
+                      lineageId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[ProviderNPI_clean]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProviderName_clean]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="ProviderName_clean"
+                      externalMetadataColumnId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProviderName]"
+                      lineageId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[ProviderName_clean]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Specialty_clean]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Specialty_clean"
+                      externalMetadataColumnId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Specialty]"
+                      lineageId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output].Columns[Specialty_clean]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProviderKey]"
+                      dataType="i4"
+                      name="ProviderKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProviderNPI]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="ProviderNPI" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProviderName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="ProviderName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Specialty]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Specialty" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimProvider\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimProvider\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DimProvider\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimProvider\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Load DimProvider.Paths[Derived Column Output]"
+              endId="Package\DFT Load DimProvider\Lookup.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\DFT Load DimProvider\Cleanup.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT Load DimProvider.Paths[Flat File Source Output]"
+              endId="Package\DFT Load DimProvider\Cleanup.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT Load DimProvider\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\DFT Load DimProvider.Paths[Lookup Match Output]"
+              endId="Package\DFT Load DimProvider\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT Load DimProvider.Paths[Lookup No Match Output]"
+              endId="Package\DFT Load DimProvider\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT Load DimProvider\Lookup.Outputs[Lookup No Match Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="188,42.6666666666667"
+          Id="Package\DFT Load DimProvider"
+          TopLeft="184,91" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Load DimProvider">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\DFT Load DimProvider\Flat File Source"
+          TopLeft="108,32" />
+        <NodeLayout
+          Size="120,42.6666666666667"
+          Id="Package\DFT Load DimProvider\Cleanup"
+          TopLeft="103,158" />
+        <NodeLayout
+          Size="114.666666666667,42.6666666666667"
+          Id="Package\DFT Load DimProvider\Lookup"
+          TopLeft="119,248" />
+        <EdgeLayout
+          Id="Package\DFT Load DimProvider.Paths[Flat File Source Output]"
+          TopLeft="186,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-23,84"
+              Start="0,0"
+              End="-23,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38"
+                    Point2="0,42"
+                    Point3="-4,42" />
+                  <mssgle:LineSegment
+                    End="-19,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19,42"
+                    Point2="-23,42"
+                    Point3="-23,46" />
+                  <mssgle:LineSegment
+                    End="-23,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DimProvider.Paths[Derived Column Output]"
+          TopLeft="163,200.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.3333333333333,47.3333333333333"
+              Start="0,0"
+              End="13.3333333333333,39.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.6666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.6666666666667"
+                    Point2="0,23.6666666666667"
+                    Point3="4,23.6666666666667" />
+                  <mssgle:LineSegment
+                    End="9.33333333333334,23.6666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.33333333333334,23.6666666666667"
+                    Point2="13.3333333333333,23.6666666666667"
+                    Point3="13.3333333333333,27.6666666666667" />
+                  <mssgle:LineSegment
+                    End="13.3333333333333,39.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\DFT Load DimProvider\OLE DB Command"
+          TopLeft="39.9999982118606,343.473680439253" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\DFT Load DimProvider\OLE DB Destination"
+          TopLeft="314.374985946343,344.84210147686" />
+        <EdgeLayout
+          Id="Package\DFT Load DimProvider.Paths[Lookup Match Output]"
+          TopLeft="158.555555555556,290.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-33.2222240103616,52.8070137725865"
+              Start="0,0"
+              End="-33.2222240103616,45.3070137725865">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5588267236706" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5588267236706"
+                    Point2="0,21.5588267236706"
+                    Point3="-4,21.5588267236706" />
+                  <mssgle:LineSegment
+                    End="-29.2222240103616,21.5588267236706" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.2222240103616,21.5588267236706"
+                    Point2="-33.2222240103616,21.5588267236706"
+                    Point3="-33.2222240103616,25.5588267236706" />
+                  <mssgle:LineSegment
+                    End="-33.2222240103616,45.3070137725865" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-64.8024987239308,26.5588267236706,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DimProvider.Paths[Lookup No Match Output]"
+          TopLeft="194.111111111111,290.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="207.597208168565,54.175434810193"
+              Start="0,0"
+              End="207.597208168565,46.675434810193">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.1174940280146" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.1174940280146"
+                    Point2="0,22.1174940280146"
+                    Point3="4,22.1174940280146" />
+                  <mssgle:LineSegment
+                    End="203.597208168565,22.1174940280146" />
+                  <mssgle:CubicBezierSegment
+                    Point1="203.597208168565,22.1174940280146"
+                    Point2="207.597208168565,22.1174940280146"
+                    Point3="207.597208168565,26.1174940280146" />
+                  <mssgle:LineSegment
+                    End="207.597208168565,46.675434810193" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="47.9922173655324,27.1174940280146,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load DimProvider\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimProvider]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load DimProvider\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

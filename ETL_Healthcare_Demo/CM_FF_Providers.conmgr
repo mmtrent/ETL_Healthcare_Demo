@@ -1,0 +1,47 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CM_FF_Providers"
+  DTS:DTSID="{9DC3DE5D-B54E-4FE7-94E8-4806F0818D70}"
+  DTS:CreationName="FLATFILE">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:Format="Delimited"
+      DTS:LocaleID="1033"
+      DTS:HeaderRowDelimiter="_x000D__x000A_"
+      DTS:ColumnNamesInFirstDataRow="True"
+      DTS:RowDelimiter=""
+      DTS:TextQualifier="_x003C_none_x003E_"
+      DTS:CodePage="1252"
+      DTS:ConnectionString="C:\Users\Mark\Documents\repos\Healthcare ETL Project\data\providers.csv">
+      <DTS:FlatFileColumns>
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="provider_npi"
+          DTS:DTSID="{9A24D631-6D9E-4098-B2FF-6C2597EC2D7A}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="provider_name"
+          DTS:DTSID="{AD4D9594-5C07-432B-94DC-F566E9A51F87}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x000D__x000A_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="specialty"
+          DTS:DTSID="{60DE48F6-1BBD-4DF6-9239-4C4549641FAC}"
+          DTS:CreationName="" />
+      </DTS:FlatFileColumns>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

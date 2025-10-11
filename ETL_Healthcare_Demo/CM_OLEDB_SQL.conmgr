@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CM_OLEDB_SQL"
+  DTS:DTSID="{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=localhost;Initial Catalog=Healthcare Project;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-LoadDimLocation-{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}localhost.Healthcare Project;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

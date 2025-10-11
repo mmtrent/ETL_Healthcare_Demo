@@ -11,293 +11,10 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadDimLocation"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{E426221A-E0E3-432F-A4C8-4612E7349363}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{EB70C28E-9F7B-463E-9783-DFBBC5E7B607}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[CM_FF_Encounters]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{5CB24C85-43F5-4D11-8C61-0F06E0DC7DD1}"
-      DTS:ObjectName="CM_FF_Encounters">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="1033"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:ColumnNamesInFirstDataRow="True"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\Mark\Documents\repos\Healthcare ETL Project\data\encounters.csv">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="encounter_id"
-              DTS:DTSID="{DB68A59F-024B-4C81-8054-0D28108C2F0D}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="patient_id"
-              DTS:DTSID="{AFF69117-2997-44AE-A72E-ADB321143987}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="provider_npi"
-              DTS:DTSID="{FF4A4B9D-5E46-4B3A-880E-B83E800B35B2}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="location_code"
-              DTS:DTSID="{E83B603A-A3D9-438A-BA43-1712048A867E}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="admit_ts"
-              DTS:DTSID="{9C9F9859-EBEC-4F98-807F-8D7A873498F8}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="discharge_ts"
-              DTS:DTSID="{C28D730F-AD99-4608-9834-53E272FD7AB7}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="primary_dx"
-              DTS:DTSID="{A589AE24-21A1-44E6-A242-23A0B9B115F4}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="service_line"
-              DTS:DTSID="{C76A39C2-74B4-42FF-8A08-97F3925837F5}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="payer"
-              DTS:DTSID="{E8443232-DA25-424C-BE3F-C9368B348709}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="charges"
-              DTS:DTSID="{5A26CF3C-24FB-48CA-AFD2-EBACA27878C9}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[CM_FF_Locations]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{6E74FA79-64EA-4B96-B724-BC3DE8BEFDD3}"
-      DTS:ObjectName="CM_FF_Locations">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="1033"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:ColumnNamesInFirstDataRow="True"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\Mark\Documents\repos\Healthcare ETL Project\data\locations.csv">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="location_code"
-              DTS:DTSID="{29ED4D24-7581-4794-ABDB-7498C5F7FFDA}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="location_name"
-              DTS:DTSID="{40A47586-AB16-481A-99F7-337E30BFBCF0}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="city"
-              DTS:DTSID="{2AC731DF-D2B0-4367-82B7-84CAC38A0448}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="state"
-              DTS:DTSID="{9EA34BD4-6C36-480B-900D-437602C7282F}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[CM_FF_Patients]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{280471BC-3BAE-4509-ADC6-493BB1AA28A3}"
-      DTS:ObjectName="CM_FF_Patients">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="1033"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:ColumnNamesInFirstDataRow="True"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\Mark\Documents\repos\Healthcare ETL Project\data\patients.csv">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="patient_id"
-              DTS:DTSID="{026932D6-496A-415B-9DCE-B6594CB4F9A7}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="gender"
-              DTS:DTSID="{55232F6F-A56A-4E8C-9D2B-D91C9E13C06E}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="birth_year"
-              DTS:DTSID="{F75DF674-9848-41DE-9D2B-57F7D2BF55A0}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="zip3"
-              DTS:DTSID="{5360C274-4582-443E-B95A-6C682AAF7B81}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[CM_FF_Providers]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{9DC3DE5D-B54E-4FE7-94E8-4806F0818D70}"
-      DTS:ObjectName="CM_FF_Providers">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="1033"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:ColumnNamesInFirstDataRow="True"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\Mark\Documents\repos\Healthcare ETL Project\data\providers.csv">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="provider_npi"
-              DTS:DTSID="{9A24D631-6D9E-4098-B2FF-6C2597EC2D7A}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="provider_name"
-              DTS:DTSID="{AD4D9594-5C07-432B-94DC-F566E9A51F87}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="specialty"
-              DTS:DTSID="{60DE48F6-1BBD-4DF6-9239-4C4549641FAC}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[CM_OLEDB_SQL]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}"
-      DTS:ObjectName="CM_OLEDB_SQL">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=Healthcare Project;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-LoadDimLocation-{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}localhost.Healthcare Project;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -513,8 +230,8 @@
               <connections>
                 <connection
                   refId="Package\DFT Load DimLocation\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[CM_FF_Locations]"
-                  connectionManagerRefId="Package.ConnectionManagers[CM_FF_Locations]"
+                  connectionManagerID="{6E74FA79-64EA-4B96-B724-BC3DE8BEFDD3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_FF_Locations]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -738,8 +455,8 @@ where [refTable].[LocationCode] = ? and [refTable].[LocationName] = ? and [refTa
               <connections>
                 <connection
                   refId="Package\DFT Load DimLocation\Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[CM_OLEDB_SQL]"
-                  connectionManagerRefId="Package.ConnectionManagers[CM_OLEDB_SQL]"
+                  connectionManagerID="{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_OLEDB_SQL]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -847,22 +564,6 @@ where [refTable].[LocationCode] = ? and [refTable].[LocationName] = ? and [refTa
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT Load DimLocation\Lookup.Outputs[Lookup Match Output].Columns[lk_LocationCode]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Copy Column"
-                      length="20"
-                      lineageId="Package\DFT Load DimLocation\Lookup.Outputs[Lookup Match Output].Columns[lk_LocationCode]"
-                      name="lk_LocationCode"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">LocationCode</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
                       refId="Package\DFT Load DimLocation\Lookup.Outputs[Lookup Match Output].Columns[lk_City]"
                       codePage="1252"
                       dataType="str"
@@ -892,6 +593,38 @@ where [refTable].[LocationCode] = ? and [refTable].[LocationName] = ? and [refTa
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn">State</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DimLocation\Lookup.Outputs[Lookup Match Output].Columns[lk_LocationCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="20"
+                      lineageId="Package\DFT Load DimLocation\Lookup.Outputs[Lookup Match Output].Columns[lk_LocationCode]"
+                      name="lk_LocationCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">LocationCode</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DimLocation\Lookup.Outputs[Lookup Match Output].Columns[lk_LocationName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\DFT Load DimLocation\Lookup.Outputs[Lookup Match Output].Columns[lk_LocationName]"
+                      name="lk_LocationName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">LocationName</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -958,8 +691,8 @@ WHERE LocationKey=?</property>
               <connections>
                 <connection
                   refId="Package\DFT Load DimLocation\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[CM_OLEDB_SQL]"
-                  connectionManagerRefId="Package.ConnectionManagers[CM_OLEDB_SQL]"
+                  connectionManagerID="{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_OLEDB_SQL]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1148,8 +881,8 @@ WHERE LocationKey=?</property>
               <connections>
                 <connection
                   refId="Package\DFT Load DimLocation\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[CM_OLEDB_SQL]"
-                  connectionManagerRefId="Package.ConnectionManagers[CM_OLEDB_SQL]"
+                  connectionManagerID="{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_OLEDB_SQL]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1308,13 +1041,57 @@ WHERE LocationKey=?</property>
           Id="Package\DFT Load DimLocation\Lookup"
           TopLeft="227,447" />
         <NodeLayout
-          Size="118,42"
-          Id="Package\DFT Load DimLocation\cleanup"
-          TopLeft="197,290" />
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\DFT Load DimLocation\OLE DB Destination"
+          TopLeft="294.374986840412,569.26315164434" />
         <NodeLayout
           Size="156,42"
           Id="Package\DFT Load DimLocation\Flat File Source"
           TopLeft="202,191" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\DFT Load DimLocation\OLE DB Command"
+          TopLeft="69.374996898696,569.947362163143" />
+        <NodeLayout
+          Size="118,42"
+          Id="Package\DFT Load DimLocation\cleanup"
+          TopLeft="197,290" />
+        <EdgeLayout
+          Id="Package\DFT Load DimLocation.Paths[Lookup Match Output]"
+          TopLeft="266.555555555556,489">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-111.847225323526,80.947362163143"
+              Start="0,0"
+              End="-111.847225323526,73.447362163143">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.0473175803657" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.0473175803657"
+                    Point2="0,33.0473175803657"
+                    Point3="-4,33.0473175803657" />
+                  <mssgle:LineSegment
+                    End="-107.847225323526,33.0473175803657" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-107.847225323526,33.0473175803657"
+                    Point2="-111.847225323526,33.0473175803657"
+                    Point3="-111.847225323526,37.0473175803657" />
+                  <mssgle:LineSegment
+                    End="-111.847225323526,73.447362163143" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-104.114999380513,38.0473175803657,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Load DimLocation.Paths[Flat File Source Output]"
           TopLeft="280,233">
@@ -1383,50 +1160,6 @@ WHERE LocationKey=?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="174.666666666667,42.6666666666667"
-          Id="Package\DFT Load DimLocation\OLE DB Destination"
-          TopLeft="294.374986840412,569.26315164434" />
-        <NodeLayout
-          Size="170.666666666667,42.6666666666667"
-          Id="Package\DFT Load DimLocation\OLE DB Command"
-          TopLeft="69.374996898696,569.947362163143" />
-        <EdgeLayout
-          Id="Package\DFT Load DimLocation.Paths[Lookup Match Output]"
-          TopLeft="266.555555555556,489">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-111.847225323526,80.947362163143"
-              Start="0,0"
-              End="-111.847225323526,73.447362163143">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.0473175803657" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.0473175803657"
-                    Point2="0,33.0473175803657"
-                    Point3="-4,33.0473175803657" />
-                  <mssgle:LineSegment
-                    End="-107.847225323526,33.0473175803657" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-107.847225323526,33.0473175803657"
-                    Point2="-111.847225323526,33.0473175803657"
-                    Point3="-111.847225323526,37.0473175803657" />
-                  <mssgle:LineSegment
-                    End="-111.847225323526,73.447362163143" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-104.114999380513,38.0473175803657,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT Load DimLocation.Paths[Lookup No Match Output]"
           TopLeft="302.111111111111,489">
@@ -1467,6 +1200,19 @@ WHERE LocationKey=?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\DFT Load DimLocation\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DFT Load DimLocation\Lookup">
     <Properties>
       <Property>
@@ -1486,19 +1232,6 @@ WHERE LocationKey=?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT Load DimLocation\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

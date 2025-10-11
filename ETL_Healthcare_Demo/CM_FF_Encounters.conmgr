@@ -1,0 +1,110 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CM_FF_Encounters"
+  DTS:DTSID="{5CB24C85-43F5-4D11-8C61-0F06E0DC7DD1}"
+  DTS:CreationName="FLATFILE">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:Format="Delimited"
+      DTS:LocaleID="1033"
+      DTS:HeaderRowDelimiter="_x000D__x000A_"
+      DTS:ColumnNamesInFirstDataRow="True"
+      DTS:RowDelimiter=""
+      DTS:TextQualifier="_x003C_none_x003E_"
+      DTS:CodePage="1252"
+      DTS:ConnectionString="C:\Users\Mark\Documents\repos\Healthcare ETL Project\data\encounters.csv">
+      <DTS:FlatFileColumns>
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="encounter_id"
+          DTS:DTSID="{DB68A59F-024B-4C81-8054-0D28108C2F0D}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="patient_id"
+          DTS:DTSID="{AFF69117-2997-44AE-A72E-ADB321143987}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="provider_npi"
+          DTS:DTSID="{FF4A4B9D-5E46-4B3A-880E-B83E800B35B2}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="location_code"
+          DTS:DTSID="{E83B603A-A3D9-438A-BA43-1712048A867E}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="admit_ts"
+          DTS:DTSID="{9C9F9859-EBEC-4F98-807F-8D7A873498F8}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="discharge_ts"
+          DTS:DTSID="{C28D730F-AD99-4608-9834-53E272FD7AB7}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="primary_dx"
+          DTS:DTSID="{A589AE24-21A1-44E6-A242-23A0B9B115F4}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="service_line"
+          DTS:DTSID="{C76A39C2-74B4-42FF-8A08-97F3925837F5}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="payer"
+          DTS:DTSID="{E8443232-DA25-424C-BE3F-C9368B348709}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x000D__x000A_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="charges"
+          DTS:DTSID="{5A26CF3C-24FB-48CA-AFD2-EBACA27878C9}"
+          DTS:CreationName="" />
+      </DTS:FlatFileColumns>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

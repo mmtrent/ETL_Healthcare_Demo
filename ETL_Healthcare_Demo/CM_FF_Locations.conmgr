@@ -1,0 +1,56 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CM_FF_Locations"
+  DTS:DTSID="{6E74FA79-64EA-4B96-B724-BC3DE8BEFDD3}"
+  DTS:CreationName="FLATFILE">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:Format="Delimited"
+      DTS:LocaleID="1033"
+      DTS:HeaderRowDelimiter="_x000D__x000A_"
+      DTS:ColumnNamesInFirstDataRow="True"
+      DTS:RowDelimiter=""
+      DTS:TextQualifier="_x003C_none_x003E_"
+      DTS:CodePage="1252"
+      DTS:ConnectionString="C:\Users\Mark\Documents\repos\Healthcare ETL Project\data\locations.csv">
+      <DTS:FlatFileColumns>
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="location_code"
+          DTS:DTSID="{29ED4D24-7581-4794-ABDB-7498C5F7FFDA}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="location_name"
+          DTS:DTSID="{40A47586-AB16-481A-99F7-337E30BFBCF0}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="city"
+          DTS:DTSID="{2AC731DF-D2B0-4367-82B7-84CAC38A0448}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x000D__x000A_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="state"
+          DTS:DTSID="{9EA34BD4-6C36-480B-900D-437602C7282F}"
+          DTS:CreationName="" />
+      </DTS:FlatFileColumns>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
