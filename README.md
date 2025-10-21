@@ -1,10 +1,10 @@
-﻿# Healthcare ETL Demo
+﻿## Healthcare ETL Demo
 
 An end-to-end data pipeline built in SSIS that extracts de-identified healthcare encounter data from CSV files, transforms it into a star schema (`DimPatient`, `DimProvider`, `DimLocation`, `FactEncounter`), and loads it into a SQL Server data warehouse for Power BI or Tableau reporting.
 
 ---
 
-## 🧱 Architecture
+## Architecture
 
 CSV (source) → SSIS (ETL) → SQL Server (Docker) → Power BI/Tableau (visualization)
 
