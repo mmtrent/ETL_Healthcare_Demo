@@ -11,11 +11,41 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{B21D47FF-CF8A-48A4-9A27-31790D15435F}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{815F0878-AB36-41A0-AFF3-95C1E05918AC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9A5F9564-719B-4859-83E3-EA5F1DC8D160}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoadDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/19/2025 10:07:29 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6E0E4A65-7C59-4E3B-AD9F-58C867E93794}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Variable">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4E98F848-F49E-432D-8D6F-AB366B229BCD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Variable1">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\DFT Load DimPatient SCD2"
@@ -50,14 +80,50 @@
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="patient_id"
-                      lineageId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[patient_id]" />
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[patient_id]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,20)(#{Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[patient_id]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,20)(patient_id)</property>
+                      </properties>
+                    </inputColumn>
                     <inputColumn
                       refId="Package\DFT Load DimPatient SCD2\cleanup.Inputs[Derived Column Input].Columns[gender]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="gender"
-                      lineageId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[gender]" />
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[gender]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,1)#{Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[gender]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,1)gender</property>
+                      </properties>
+                    </inputColumn>
                     <inputColumn
                       refId="Package\DFT Load DimPatient SCD2\cleanup.Inputs[Derived Column Input].Columns[birth_year]"
                       cachedCodepage="1252"
@@ -89,7 +155,7 @@
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="50"
+                      length="20"
                       lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[PatientID_clean]"
                       name="PatientID_clean"
                       truncationRowDisposition="FailComponent">
@@ -98,13 +164,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LTRIM]([RTRIM](#{Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[patient_id]}))</property>
+                          name="Expression">(DT_WSTR,20)[LTRIM]([RTRIM](#{Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[patient_id]}))</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">LTRIM(RTRIM(patient_id))</property>
+                          name="FriendlyExpression">(DT_WSTR,20)LTRIM(RTRIM(patient_id))</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -112,7 +178,7 @@
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="50"
+                      length="1"
                       lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[Gender_clean]"
                       name="Gender_clean"
                       truncationRowDisposition="FailComponent">
@@ -121,36 +187,35 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LTRIM]([RTRIM](#{Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[gender]}))</property>
+                          name="Expression">(DT_WSTR,1)[LTRIM]([RTRIM](#{Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[gender]}))</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">LTRIM(RTRIM(gender))</property>
+                          name="FriendlyExpression">(DT_WSTR,1)LTRIM(RTRIM(gender))</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[BirthYear_in]"
-                      dataType="wstr"
+                      refId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[BirthYear_int]"
+                      dataType="i4"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[BirthYear_in]"
-                      name="BirthYear_in"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[BirthYear_int]"
+                      name="BirthYear_int"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LTRIM]([RTRIM](#{Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[birth_year]}))</property>
+                          name="Expression">(DT_I4)[LTRIM]([RTRIM](#{Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[birth_year]}))</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">LTRIM(RTRIM(birth_year))</property>
+                          name="FriendlyExpression">(DT_I4)LTRIM(RTRIM(birth_year))</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -197,6 +262,445 @@
                       refId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DimPatient SCD2\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load DimPatient SCD2\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion.Inputs[Data Conversion Input].Columns[PatientID_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="PatientID_clean"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[PatientID_clean]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion.Inputs[Data Conversion Input].Columns[Gender_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Gender_clean"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Gender_clean]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion.Inputs[Data Conversion Input].Columns[Zip3_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Zip3_clean"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Zip3_clean]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Output].Columns[PatientID_str]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Output].Columns[PatientID_str]"
+                      name="PatientID_str"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[PatientID_clean]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Output].Columns[Gender_clean_str]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Output].Columns[Gender_clean_str]"
+                      name="Gender_clean_str"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Gender_clean]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Output].Columns[Zip3_clean_str]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Output].Columns[Zip3_clean_str]"
+                      name="Zip3_clean_str"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Zip3_clean]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DimPatient SCD2\Data Conversion 1"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Inputs[Data Conversion Input].Columns[Gender_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender_clean"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[Gender_clean]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Inputs[Data Conversion Input].Columns[PatientID_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="PatientID_clean"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[PatientID_clean]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Output].Columns[Gender_clean_str]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Output].Columns[Gender_clean_str]"
+                      name="Gender_clean_str"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[Gender_clean]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Output].Columns[PatientID_clean_str]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Output].Columns[PatientID_clean_str]"
+                      name="PatientID_clean_str"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[PatientID_clean]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DimPatient SCD2\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load DimPatient SCD2\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Derived Column.Outputs[Derived Column Output].Columns[EffectiveEnd]"
+                      dataType="dbTimeStamp2"
+                      description="EffectiveEnd"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Load DimPatient SCD2\Derived Column.Outputs[Derived Column Output].Columns[EffectiveEnd]"
+                      name="EffectiveEnd"
+                      scale="7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP2,7)(@[User::LoadDate])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP2,7)(@[User::LoadDate])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DimPatient SCD2\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load DimPatient SCD2\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Derived Column 1.Inputs[Derived Column Input].Columns[PatientID_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="PatientID_clean"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[PatientID_clean]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)[LTRIM]([RTRIM](#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[PatientID_clean]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)LTRIM(RTRIM(PatientID_clean))</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Derived Column 1.Inputs[Derived Column Input].Columns[Gender_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Gender_clean"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Gender_clean]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)[LTRIM]([RTRIM](#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Gender_clean]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)LTRIM(RTRIM(Gender_clean))</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Derived Column 1.Outputs[Derived Column Output].Columns[EffectiveStart]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Load DimPatient SCD2\Derived Column 1.Outputs[Derived Column Output].Columns[EffectiveStart]"
+                      name="EffectiveStart"
+                      scale="7"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP2,7)(@[User::LoadDate])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP2,7)(@[User::LoadDate])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -382,6 +886,426 @@
               </outputs>
             </component>
             <component
+              refId="Package\DFT Load DimPatient SCD2\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimPatient] 
+SET [EffectiveEnd] = ? 
+WHERE  PatientID   = CAST(? AS NVARCHAR(50));</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load DimPatient SCD2\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_OLEDB_SQL]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load DimPatient SCD2\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Command.Inputs[OLE DB Command Input].Columns[PatientID_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="PatientID_clean"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[PatientID_clean]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Command.Inputs[OLE DB Command Input].Columns[EffectiveEnd]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="EffectiveEnd"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT Load DimPatient SCD2\Derived Column.Outputs[Derived Column Output].Columns[EffectiveEnd]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp2"
+                      name="Param_0"
+                      scale="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1073741889</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DimPatient SCD2\OLE DB Command 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimPatient] SET [Gender] = CAST(? AS VARCHAR(50)) WHERE [PatientID] = CAST(? AS VARCHAR(50))</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Connections[OleDbConnection]"
+                  connectionManagerID="{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_OLEDB_SQL]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Gender_clean_str]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Gender_clean_str"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Output].Columns[Gender_clean_str]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[PatientID_clean_str]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="PatientID_clean_str"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Output].Columns[PatientID_clean_str]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DimPatient SCD2\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimPatient]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_OLEDB_SQL]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EffectiveStart]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="EffectiveStart"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveStart]"
+                      lineageId="Package\DFT Load DimPatient SCD2\Derived Column 1.Outputs[Derived Column Output].Columns[EffectiveStart]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[birth_year]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="birth_year"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthYear]"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[birth_year]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PatientID_str]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PatientID_str"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PatientID]"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Output].Columns[PatientID_str]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gender_clean_str]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Gender_clean_str"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Output].Columns[Gender_clean_str]" />
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Zip3_clean_str]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Zip3_clean_str"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Zip3]"
+                      lineageId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Output].Columns[Zip3_clean_str]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PatientKey]"
+                      dataType="i4"
+                      name="PatientKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PatientID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PatientID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthYear]"
+                      dataType="i4"
+                      name="BirthYear" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Zip3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Zip3" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveStart]"
+                      dataType="dbTimeStamp2"
+                      name="EffectiveStart"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EffectiveEnd]"
+                      dataType="dbTimeStamp2"
+                      name="EffectiveEnd"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsCurrent]"
+                      dataType="bool"
+                      name="IsCurrent" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension"
               componentClassID="Microsoft.SCD"
               contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
@@ -393,15 +1317,15 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [BirthYear], [Gender], [PatientID], [Zip3],[EffectiveStart],[EffectiveEnd] FROM [dbo].[DimPatient]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
-                  name="CurrentRowWhere"></property>
+                  name="CurrentRowWhere">[EffectiveStart] IS NOT NULL AND [EffectiveEnd] IS NULL</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
-                  name="UpdateChangingAttributeHistory">false</property>
+                  name="UpdateChangingAttributeHistory">true</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
@@ -419,7 +1343,7 @@
                   description="Indicates whether the transformation fails when a lookup of an existing record fails."
                   name="FailOnLookupFailure">false</property>
                 <property
-                  dataType="System.UInt32"
+                  dataType="System.Int32"
                   description="Specifies that all rows in the input are new or the transformation detects the change type."
                   name="IncomingRowChangeType"
                   typeConverter="IncomingRowChangeType">1</property>
@@ -431,6 +1355,8 @@
               <connections>
                 <connection
                   refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_OLEDB_SQL]"
                   description="Defines the connection to use for lookups in the dimension table"
                   name="LookupConnection" />
               </connections>
@@ -438,8 +1364,98 @@
                 <input
                   refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
                   name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[BirthYear_int]"
+                      cachedDataType="i4"
+                      cachedName="BirthYear_int"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[BirthYear]"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[BirthYear_int]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Gender_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender_clean"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Gender]"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[Gender_clean]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[PatientID_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="PatientID_clean"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PatientID]"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[PatientID_clean]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Zip3_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Zip3_clean"
+                      externalMetadataColumnId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Zip3]"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[Zip3_clean]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
                   <externalMetadataColumns
-                    isUsed="True" />
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[BirthYear]"
+                      dataType="i4"
+                      name="BirthYear" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PatientID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PatientID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Zip3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="Zip3" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EffectiveStart]"
+                      dataType="dbTimeStamp2"
+                      name="EffectiveStart"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EffectiveEnd]"
+                      dataType="dbTimeStamp2"
+                      name="EffectiveEnd"
+                      scale="7" />
+                  </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
@@ -493,18 +1509,385 @@
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\DFT Load DimPatient SCD2\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 1].Columns[patient_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="patient_id"
+                      lineageId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[patient_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[patient_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 1].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="gender"
+                      lineageId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 1].Columns[birth_year]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="birth_year"
+                      lineageId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[birth_year]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[birth_year]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 1].Columns[zip3]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="zip3"
+                      lineageId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[zip3]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[zip3]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 1].Columns[PatientID_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="PatientID_clean"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[PatientID_clean]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[PatientID_clean]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 1].Columns[Gender_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender_clean"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[Gender_clean]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Gender_clean]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 1].Columns[BirthYear_int]"
+                      cachedDataType="i4"
+                      cachedName="BirthYear_int"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[BirthYear_int]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[BirthYear_int]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 1].Columns[Zip3_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Zip3_clean"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[Zip3_clean]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Zip3_clean]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 2].Columns[patient_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="patient_id"
+                      lineageId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[patient_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[patient_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 2].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="gender"
+                      lineageId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 2].Columns[birth_year]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="birth_year"
+                      lineageId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[birth_year]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[birth_year]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 2].Columns[zip3]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="zip3"
+                      lineageId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output].Columns[zip3]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[zip3]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 2].Columns[PatientID_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="PatientID_clean"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[PatientID_clean]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[PatientID_clean]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 2].Columns[Gender_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender_clean"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[Gender_clean]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Gender_clean]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 2].Columns[BirthYear_int]"
+                      cachedDataType="i4"
+                      cachedName="BirthYear_int"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[BirthYear_int]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[BirthYear_int]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 2].Columns[Zip3_clean]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Zip3_clean"
+                      lineageId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output].Columns[Zip3_clean]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Zip3_clean]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[patient_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[patient_id]"
+                      name="patient_id" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[gender]"
+                      name="gender" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[birth_year]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[birth_year]"
+                      name="birth_year" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[zip3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[zip3]"
+                      name="zip3" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[PatientID_clean]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[PatientID_clean]"
+                      name="PatientID_clean" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Gender_clean]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Gender_clean]"
+                      name="Gender_clean" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[BirthYear_int]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[BirthYear_int]"
+                      name="BirthYear_int" />
+                    <outputColumn
+                      refId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Zip3_clean]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1].Columns[Zip3_clean]"
+                      name="Zip3_clean" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
+            <path
+              refId="Package\DFT Load DimPatient SCD2.Paths[Changing Attribute Updates Output]"
+              endId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Inputs[Data Conversion Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
+            <path
+              refId="Package\DFT Load DimPatient SCD2.Paths[Data Conversion Output]"
+              endId="Package\DFT Load DimPatient SCD2\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT Load DimPatient SCD2\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DFT Load DimPatient SCD2.Paths[Data Conversion Output1]"
+              endId="Package\DFT Load DimPatient SCD2\OLE DB Command 1.Inputs[OLE DB Command Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT Load DimPatient SCD2\Data Conversion 1.Outputs[Data Conversion Output]" />
             <path
               refId="Package\DFT Load DimPatient SCD2.Paths[Derived Column Output]"
               endId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
               name="Derived Column Output"
               startId="Package\DFT Load DimPatient SCD2\cleanup.Outputs[Derived Column Output]" />
             <path
+              refId="Package\DFT Load DimPatient SCD2.Paths[Derived Column Output1]"
+              endId="Package\DFT Load DimPatient SCD2\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\DFT Load DimPatient SCD2\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT Load DimPatient SCD2.Paths[Derived Column Output2]"
+              endId="Package\DFT Load DimPatient SCD2\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\DFT Load DimPatient SCD2\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
               refId="Package\DFT Load DimPatient SCD2.Paths[Flat File Source Output]"
               endId="Package\DFT Load DimPatient SCD2\cleanup.Inputs[Derived Column Input]"
               name="Flat File Source Output"
               startId="Package\DFT Load DimPatient SCD2\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\DFT Load DimPatient SCD2.Paths[Historical Attribute Inserts Output]"
+              endId="Package\DFT Load DimPatient SCD2\Derived Column.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\DFT Load DimPatient SCD2.Paths[New Output]"
+              endId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\DFT Load DimPatient SCD2.Paths[OLE DB Command Output]"
+              endId="Package\DFT Load DimPatient SCD2\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\DFT Load DimPatient SCD2\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\DFT Load DimPatient SCD2.Paths[Union All Output 1]"
+              endId="Package\DFT Load DimPatient SCD2\Derived Column 1.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\DFT Load DimPatient SCD2\Union All.Outputs[Union All Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -533,41 +1916,225 @@
     design-time-name="Package\DFT Load DimPatient SCD2">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="154.666666666667,42.6666666666667"
-          Id="Package\DFT Load DimPatient SCD2\Flat File Source"
-          TopLeft="160.624992819503,72.5263149931491" />
+          Size="156,42.6666666666667"
+          Id="Package\DFT Load DimPatient SCD2\Derived Column"
+          TopLeft="19.8333333333334,313.5" />
+        <NodeLayout
+          Size="212,42.6666666666667"
+          Id="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension"
+          TopLeft="130.833333333333,210.833333333333" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\DFT Load DimPatient SCD2\OLE DB Command"
+          TopLeft="5.50000000000004,416.166666666666" />
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\DFT Load DimPatient SCD2\OLE DB Command 1"
+          TopLeft="390.958329170321,418.868419895707" />
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\DFT Load DimPatient SCD2\Derived Column 1"
+          TopLeft="154.166666666667,620.815789481197" />
         <NodeLayout
           Size="117.333333333334,42.6666666666667"
           Id="Package\DFT Load DimPatient SCD2\cleanup"
-          TopLeft="153.74999312684,187.473682152102" />
+          TopLeft="178.166666666667,108.166666666666" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\DFT Load DimPatient SCD2\Flat File Source"
+          TopLeft="159.5,5.49999999999993" />
         <EdgeLayout
           Id="Package\DFT Load DimPatient SCD2.Paths[Flat File Source Output]"
-          TopLeft="237.958326152836,115.192981659816">
+          TopLeft="236.833333333333,48.1666666666666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-25.5416663593302,72.2807004922866"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="-25.5416663593302,64.7807004922866">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.1403502461433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,32.1403502461433"
-                    Point2="0,36.1403502461433"
-                    Point3="-4,36.1403502461433" />
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DimPatient SCD2.Paths[Derived Column Output1]"
+          TopLeft="94.3333333333334,356.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999993"
+              Start="0,0"
+              End="0,52.4999999999993">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-21.5416663593302,36.1403502461433" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-21.5416663593302,36.1403502461433"
-                    Point2="-25.5416663593302,36.1403502461433"
-                    Point3="-25.5416663593302,40.1403502461433" />
+                    End="0,52.4999999999993" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DimPatient SCD2.Paths[Derived Column Output]"
+          TopLeft="236.833333333333,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999998"
+              Start="0,0"
+              End="0,52.4999999999998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-25.5416663593302,64.7807004922866" />
+                    End="0,52.4999999999998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DimPatient SCD2.Paths[Historical Attribute Inserts Output]"
+          TopLeft="185.833333333333,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-88,60"
+              Start="0,0"
+              End="-88,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4968944099379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4968944099379"
+                    Point2="0,20.4968944099379"
+                    Point3="-4,20.4968944099379" />
+                  <mssgle:LineSegment
+                    End="-84,20.4968944099379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-84,20.4968944099379"
+                    Point2="-88,20.4968944099379"
+                    Point3="-88,24.4968944099379" />
+                  <mssgle:LineSegment
+                    End="-88,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-119.05638671875,25.4968944099379,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="122.666666666667,42.6666666666667"
+          Id="Package\DFT Load DimPatient SCD2\Union All"
+          TopLeft="176.12499997206,518.833333333333" />
+        <EdgeLayout
+          Id="Package\DFT Load DimPatient SCD2.Paths[New Output]"
+          TopLeft="236.833333333333,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.7361110831714,265.333333333333"
+              Start="0,0"
+              End="19.7361110831714,257.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,153.150214592275" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,153.150214592275"
+                    Point2="0,157.150214592275"
+                    Point3="4,157.150214592275" />
+                  <mssgle:LineSegment
+                    End="15.7361110831714,157.150214592275" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.7361110831714,157.150214592275"
+                    Point2="19.7361110831714,157.150214592275"
+                    Point3="19.7361110831714,161.150214592275" />
+                  <mssgle:LineSegment
+                    End="19.7361110831714,257.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.2233311771643,162.150214592275,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DimPatient SCD2.Paths[OLE DB Command Output]"
+          TopLeft="90.8333333333334,458.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.513888860949,60.0000000000003"
+              Start="0,0"
+              End="127.513888860949,52.5000000000003">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5364806866955" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5364806866955"
+                    Point2="0,35.5364806866955"
+                    Point3="4,35.5364806866955" />
+                  <mssgle:LineSegment
+                    End="123.513888860949,35.5364806866955" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.513888860949,35.5364806866955"
+                    Point2="127.513888860949,35.5364806866955"
+                    Point3="127.513888860949,39.5364806866955" />
+                  <mssgle:LineSegment
+                    End="127.513888860949,52.5000000000003" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DimPatient SCD2.Paths[Union All Output 1]"
+          TopLeft="237.145833319364,561.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.3157894811972"
+              Start="0,0"
+              End="0,51.8157894811972">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.8157894811972" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -577,35 +2144,147 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="212,42.6666666666667"
-          Id="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension"
-          TopLeft="133.124994048849,285.315786340973" />
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\DFT Load DimPatient SCD2\OLE DB Destination"
+          TopLeft="151.249993238598,804.631570112673" />
+        <NodeLayout
+          Size="158.666666666667,42.6666666666667"
+          Id="Package\DFT Load DimPatient SCD2\Data Conversion"
+          TopLeft="329.374985275791,717.684202953719" />
         <EdgeLayout
-          Id="Package\DFT Load DimPatient SCD2.Paths[Derived Column Output]"
-          TopLeft="212.416659793506,230.140348818769">
+          Id="Package\DFT Load DimPatient SCD2.Paths[Derived Column Output2]"
+          TopLeft="236.833333333334,663.482456147863">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="26.7083342553427,55.1754375222042"
+              EndConnector="171.87498527579,54.201746805856"
               Start="0,0"
-              End="26.7083342553427,47.6754375222042">
+              End="171.87498527579,46.701746805856">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.5877187611021" />
+                    End="0,23.100873402928" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,23.5877187611021"
-                    Point2="0,27.5877187611021"
-                    Point3="4,27.5877187611021" />
+                    Point1="0,23.100873402928"
+                    Point2="0,27.100873402928"
+                    Point3="4,27.100873402928" />
                   <mssgle:LineSegment
-                    End="22.7083342553427,27.5877187611021" />
+                    End="167.87498527579,27.100873402928" />
                   <mssgle:CubicBezierSegment
-                    Point1="22.7083342553427,27.5877187611021"
-                    Point2="26.7083342553427,27.5877187611021"
-                    Point3="26.7083342553427,31.5877187611021" />
+                    Point1="167.87498527579,27.100873402928"
+                    Point2="171.87498527579,27.100873402928"
+                    Point3="171.87498527579,31.100873402928" />
                   <mssgle:LineSegment
-                    End="26.7083342553427,47.6754375222042" />
+                    End="171.87498527579,46.701746805856" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DimPatient SCD2.Paths[Data Conversion Output]"
+          TopLeft="408.708318609124,760.350869620386">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-170.124992037192,44.2807004922865"
+              Start="0,0"
+              End="-170.124992037192,36.7807004922865">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.1403502461433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.1403502461433"
+                    Point2="0,22.1403502461433"
+                    Point3="-4,22.1403502461433" />
+                  <mssgle:LineSegment
+                    End="-166.124992037192,22.1403502461433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-166.124992037192,22.1403502461433"
+                    Point2="-170.124992037192,22.1403502461433"
+                    Point3="-170.124992037192,26.1403502461433" />
+                  <mssgle:LineSegment
+                    End="-170.124992037192,36.7807004922865" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="168,42.6666666666667"
+          Id="Package\DFT Load DimPatient SCD2\Data Conversion 1"
+          TopLeft="321.249985639006,300.999997002514" />
+        <EdgeLayout
+          Id="Package\DFT Load DimPatient SCD2.Paths[Changing Attribute Updates Output]"
+          TopLeft="287.833333333333,253.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="117.416652305673,47.4999970025142"
+              Start="0,0"
+              End="117.416652305673,39.9999970025142">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.2267070505483" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.2267070505483"
+                    Point2="0,16.2267070505483"
+                    Point3="4,16.2267070505483" />
+                  <mssgle:LineSegment
+                    End="113.416652305673,16.2267070505483" />
+                  <mssgle:CubicBezierSegment
+                    Point1="113.416652305673,16.2267070505483"
+                    Point2="117.416652305673,16.2267070505483"
+                    Point3="117.416652305673,20.2267070505483" />
+                  <mssgle:LineSegment
+                    End="117.416652305673,39.9999970025142" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-19.8255800971633,21.2267070505483,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DimPatient SCD2.Paths[Data Conversion Output1]"
+          TopLeft="405.249985639006,343.666663669181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75.7083435313148,75.2017562265266"
+              Start="0,0"
+              End="75.7083435313148,67.7017562265266">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.6008781132633" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.6008781132633"
+                    Point2="0,37.6008781132633"
+                    Point3="4,37.6008781132633" />
+                  <mssgle:LineSegment
+                    End="71.7083435313148,37.6008781132633" />
+                  <mssgle:CubicBezierSegment
+                    Point1="71.7083435313148,37.6008781132633"
+                    Point2="75.7083435313148,37.6008781132633"
+                    Point3="75.7083435313148,41.6008781132633" />
+                  <mssgle:LineSegment
+                    End="75.7083435313148,67.7017562265266" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -617,5 +2296,77 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load DimPatient SCD2\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{6FA0A9E1-D87A-41AE-9275-CB6091D4CB65}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[DimPatient]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;cleanup.Outputs[Derived Column Output].Columns[BirthYear_int]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;BirthYear&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;cleanup.Outputs[Derived Column Output].Columns[Gender_clean]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Gender&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;cleanup.Outputs[Derived Column Output].Columns[PatientID_clean]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;PatientID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;cleanup.Outputs[Derived Column Output].Columns[Zip3_clean]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Zip3&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 1&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;true&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;EffectiveStart&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;EffectiveEnd&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;User::LoadDate&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load DimPatient SCD2\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
